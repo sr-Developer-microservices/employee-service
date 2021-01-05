@@ -3,7 +3,7 @@ package com.employeemanagement.rohit.model;
 public class Employee {
     private int employeeId;
     private String name;
-    private String designation;
+    private long jobId;
     private int salary;
 
     public int getEmployeeId() {
@@ -22,12 +22,12 @@ public class Employee {
         this.name = name;
     }
 
-    public String getDesignation() {
-        return designation;
+    public long getJobId() {
+        return jobId;
     }
 
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setJobId(long jobId) {
+        this.jobId = jobId;
     }
 
     public int getSalary() {
