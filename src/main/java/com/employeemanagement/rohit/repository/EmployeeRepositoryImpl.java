@@ -16,7 +16,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     private static final String SELECT_ALL_EMPLOYEE = "select * from employee";
 
-    private static final String ADD_EMPLOYEE = "INSERT INTO EMPLOYEE(name,designation,salary) values (?,?,?)";
+    private static final String ADD_EMPLOYEE = "INSERT INTO EMPLOYEE(name,job_id,salary) values (?,?,?)";
 
     private static final String DELETE_EMPLOYEE = "DELETE FROM EMPLOYEE WHERE employee_id = ?";
 
@@ -27,7 +27,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public void addEmployee(Employee employee) {
-        jdbcTemplate.update(ADD_EMPLOYEE,employee.getName(),employee.getDesignation(),employee.getSalary());
+        jdbcTemplate.update(ADD_EMPLOYEE,employee.getName(),employee.getJobId(),employee.getSalary());
     }
 
     @Override

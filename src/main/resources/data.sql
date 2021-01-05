@@ -1,2 +1,2 @@
-insert into employee (name,designation,salary)
-values ('rohit','developer',105000);
+insert into employee (name,job_id,salary)
+values ('rohit',1,105000);
