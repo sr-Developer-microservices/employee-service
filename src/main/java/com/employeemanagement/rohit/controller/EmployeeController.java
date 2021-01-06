@@ -29,6 +29,10 @@ public class EmployeeController {
         return (List<EmployeeResponseDto>) employeeResponseDto;
     }
 
+    @GetMapping(value = "/getEmployee/{id}")
+    public EmployeeResponseDto getEmployeeWithDepartmentNJob(@PathVariable Long id){
+        return employeeService.getEmployeeWithDepartmentNJob(id);
+    }
     @PostMapping(value = "/addEmployee")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee) throws ValidationException {
         try {
