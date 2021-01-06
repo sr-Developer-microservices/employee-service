@@ -1,5 +1,6 @@
 package com.employeemanagement.rohit.controller;
 
+import com.employeemanagement.rohit.dto.EmployeeResponseDto;
 import com.employeemanagement.rohit.exception.ValidationException;
 import com.employeemanagement.rohit.model.Employee;
 import com.employeemanagement.rohit.service.EmployeeService;
@@ -20,8 +21,12 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping(value = "/getAllEmployee")
-    public List<Employee> getAllEmployee() {
-        return employeeService.getAllEmployee();
+    public List<EmployeeResponseDto> getAllEmployee() {
+        EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
+
+        employeeService.getAllEmployee();
+
+        return (List<EmployeeResponseDto>) employeeResponseDto;
     }
 
     @PostMapping(value = "/addEmployee")
