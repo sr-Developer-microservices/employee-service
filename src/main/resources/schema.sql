@@ -3,6 +3,7 @@ create table employee(
     name varchar(25) not null,
     job_id bigint not null,
     salary int not null,
+    department_id bigint not null,
     constraint pk_employee primary key(employee_id)
 );
 

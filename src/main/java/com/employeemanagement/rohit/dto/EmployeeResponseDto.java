@@ -5,7 +5,9 @@ import com.employeemanagement.rohit.model.Employee;
 import com.employeemanagement.rohit.model.Job;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author : Rohit Khadse
@@ -15,6 +17,8 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeResponseDto {
     private Employee employee;
     private Job job;
