@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -22,21 +24,28 @@ public class EmployeeController {
 
     @GetMapping(value = "/getAllEmployee")
     public List<EmployeeResponseDto> getAllEmployee() {
-        EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
+        List<EmployeeResponseDto> employeeResponseDtoList = new ArrayList<>();
 
-        employeeService.getAllEmployee();
+       List<Employee> employeeList = employeeService.getAllEmployee();
 
-        return (List<EmployeeResponseDto>) employeeResponseDto;
+       for (Employee employee : employeeList){
+           EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
+           employeeResponseDto.setEmployee(employee);
+           employeeResponseDtoList.add(employeeResponseDto);
+       }
+
+        return employeeResponseDtoList;
     }
 
     @GetMapping(value = "/getEmployee/{id}")
     public EmployeeResponseDto getEmployeeWithDepartmentNJob(@PathVariable Long id){
         return employeeService.getEmployeeWithDepartmentNJob(id);
     }
+
     @PostMapping(value = "/addEmployee")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee) throws ValidationException {
         try {
-            employeeValidationHelper.validateName(employee.getName());
+            employeeValidationHelper.validateName(employee.getClass().getName());
         }
         catch (ValidationException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
